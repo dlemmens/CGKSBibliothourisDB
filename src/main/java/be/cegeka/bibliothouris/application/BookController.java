@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/book")
@@ -21,5 +22,8 @@ public class BookController {
     @GetMapping(path = "/{id}")
     public Book getBookDetails(@PathVariable(value = "id") int id) {
         return bookService.getBookDetails(id);
+    }
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
     }
 }
