@@ -25,6 +25,11 @@ public class BookControllerTest {
 
     @Test
     public void whenGettingBookDetails_ShouldReturnDetailsOfASingleBook() throws Exception {
-
+        
+//        Book book1 = new Book("12345", "Jeroen's day out", "Jeroen", "Stroobants");
+//        Book book2 = new Book("1358", "Jeroen's gows dancing", "Jeroen", "Stroobants");
+//
+//        when(bookService.getBookDetails("12345")).thenReturn(book1);
+//        assertThat(bookController.getBookDetails("12345")).isEqualTo(book1);
     }
 }
