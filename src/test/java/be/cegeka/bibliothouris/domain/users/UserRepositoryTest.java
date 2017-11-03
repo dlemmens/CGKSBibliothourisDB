@@ -49,6 +49,14 @@ public class UserRepositoryTest {
         assertThat(users).containsOnly(seppe, kiki);
     }
 
+    @Test
+    public void checkAddUsers(){
+        User tbow = aUser().withName("tbow").build();
+        userRepository.addUser(tbow);
+        List<User> users = userRepository.getAllUsers();
+        assertThat(users).containsOnly(seppe, kiki, tbow);
+    }
+
     @After
     public void teardown(){
         entityManager.clear();
