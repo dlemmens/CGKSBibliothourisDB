@@ -21,6 +21,16 @@ public class UserTest {
     }
 
     @Test
+    public void getID() throws Exception {
+        assertThat(user.getId()).isEqualTo(10);
+    }
+
+    @Test
+    public void getName() throws Exception {
+        assertThat(user.getName()).isEqualTo("Seppe");
+    }
+
+    @Test
     public void equals_SameObject_IsTrue() throws Exception {
         assertThat(user).isEqualTo(user);
     }
@@ -92,4 +102,4 @@ public class UserTest {
                         .build());
     }
 
-}
+  }
