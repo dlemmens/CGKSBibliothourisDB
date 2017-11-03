@@ -18,7 +18,7 @@ public class BookRepository {
     }
     public Book getBookdetails(int id) {
 
-        return entityManager.createQuery("select b from book b where id=:id",Book.class).setParameter("id",id).getSingleResult();
+        return entityManager.createQuery("select b from Book b where b.id=:id",Book.class).setParameter("id",id).getSingleResult();
 
     }
 }

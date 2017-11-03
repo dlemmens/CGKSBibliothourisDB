@@ -28,4 +28,7 @@ public class Book {
         this.authorFirstName = authorFirstName;
     }
 
+    public int getId() {
+        return id;
+    }
 }

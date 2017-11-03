@@ -32,6 +32,7 @@ public class UserRepositoryTest {
 
     @PersistenceContext
     private EntityManager entityManager;
+
     private User seppe, kiki;
 
     @Before
