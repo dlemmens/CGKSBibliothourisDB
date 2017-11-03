@@ -25,6 +25,6 @@ public class BookControllerTest {
 
     @Test
     public void whenGettingBookDetails_ShouldReturnDetailsOfASingleBook() throws Exception {
-    
+
     }
 }
