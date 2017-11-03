@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static be.cegeka.bibliothouris.domain.users.UserTestBuilder.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -102,4 +104,4 @@ public class UserTest {
                         .build());
     }
 
-  }
+}
