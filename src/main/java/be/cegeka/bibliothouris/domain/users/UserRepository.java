@@ -21,9 +21,9 @@ public class UserRepository {
         entityManager.persist(user);
     }
 
-    public User getUserByName(String name) {
-        return entityManager.createQuery("select u from User u where u.name like :name", User.class)
-                .setParameter("name", name)
+    public User getUserByFirstName(String firstName) {
+        return entityManager.createQuery("select u from User u where u.firstName like :firstName", User.class)
+                .setParameter("firstName", firstName)
                 .getSingleResult();
     }
 }

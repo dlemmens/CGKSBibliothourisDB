@@ -11,8 +11,8 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
-    public void addUser(String name){
-        userRepository.addUser(new User(name));
+    public void addUser(String firstName){
+        userRepository.addUser(new User(firstName));
     }
 
     public List<User> getAllUsers() {

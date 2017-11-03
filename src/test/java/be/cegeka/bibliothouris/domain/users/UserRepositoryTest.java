@@ -37,8 +37,8 @@ public class UserRepositoryTest {
 
     @Before
     public void setup(){
-        seppe = aUser().withName("Seppe").build();
-        kiki = aUser().withName("Kiki").build();
+        seppe = aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("1234").build();
+        kiki = aUser().withFirstName("Kiki").withLastName("Willems").withCity("Leuven").withInss("5678").build();
 
         entityManager.persist(seppe);
         entityManager.persist(kiki);
@@ -51,27 +51,27 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void getUserByName(){
-        User actual = userRepository.getUserByName("Seppe");
+    public void getUserByFirstName(){
+        User actual = userRepository.getUserByFirstName("Seppe");
 
         assertThat(actual).isEqualTo(seppe);
     }
 
     @Test
-    public void getUserByName_NoUserFound(){
-        assertThatThrownBy(()-> { userRepository.getUserByName("Seppe2"); } ).isInstanceOf(NoResultException.class);
+    public void getUserByFirstName_NoUserFound(){
+        assertThatThrownBy(()-> { userRepository.getUserByFirstName("Seppe2"); } ).isInstanceOf(NoResultException.class);
     }
 
     @Test
-    public void getUserByName_NoUniqueUserFound(){
-        entityManager.persist(aUser().withName("Seppe").build());
+    public void getUserByFirstName_NoUniqueUserFound(){
+        entityManager.persist(aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("12366664").build());
 
-        assertThatThrownBy(()-> { userRepository.getUserByName("Seppe"); } ).isInstanceOf(NonUniqueResultException.class);
+        assertThatThrownBy(()-> { userRepository.getUserByFirstName("Seppe"); } ).isInstanceOf(NonUniqueResultException.class);
     }
 
     @Test
     public void checkAddUsers(){
-        User tbow = aUser().withName("tbow").build();
+        User tbow = aUser().withFirstName("tbow").withInss("333333").build();
         userRepository.addUser(tbow);
         List<User> users = userRepository.getAllUsers();
         assertThat(users).containsOnly(seppe, kiki, tbow);

@@ -1,12 +1,10 @@
 package be.cegeka.bibliothouris.domain.users;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
 import static be.cegeka.bibliothouris.domain.users.UserTestBuilder.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 public class UserTest {
 
@@ -15,7 +13,7 @@ public class UserTest {
     @Before
     public void setup() {
         user = aUser()
-                .withName("Seppe")
+                .withFirstName("Seppe")
                 .withId(10)
                 .build();
     }
@@ -39,7 +37,7 @@ public class UserTest {
     public void equals_ObjectWithSameIdAndName_IsTrue() throws Exception {
         assertThat(user).isEqualTo(aUser()
                 .withId(10)
-                .withName("Seppe")
+                .withFirstName("Seppe")
                 .build()
         );
     }
@@ -58,7 +56,7 @@ public class UserTest {
     public void equals_ObjectWithOtherId_IsFalse() throws Exception {
         assertThat(user).isNotEqualTo(aUser()
                 .withId(9)
-                .withName("Seppe")
+                .withFirstName("Seppe")
                 .build());
     }
 
@@ -66,7 +64,7 @@ public class UserTest {
     public void equals_ObjectWithOtherName_IsFalse() throws Exception {
         assertThat(user).isNotEqualTo(aUser()
                 .withId(10)
-                .withName("Other")
+                .withFirstName("Other")
                 .build());
     }
 
@@ -74,7 +72,7 @@ public class UserTest {
     public void equals_ObjectWithNullName_IsFalse() throws Exception {
         assertThat(user).isNotEqualTo(aUser()
                 .withId(10)
-                .withName(null)
+                .withFirstName(null)
                 .build());
     }
 
@@ -82,11 +80,11 @@ public class UserTest {
     public void equals_ObjectWithBothNullName_IsTrue() throws Exception {
         assertThat(aUser()
                 .withId(10)
-                .withName(null)
+                .withFirstName(null)
                 .build())
                 .isEqualTo(aUser()
                         .withId(10)
-                        .withName(null)
+                        .withFirstName(null)
                         .build());
     }
 
@@ -94,11 +92,11 @@ public class UserTest {
     public void equals_ObjectWithNoNullName_IsFalse() throws Exception {
         assertThat(aUser()
                 .withId(10)
-                .withName(null)
+                .withFirstName(null)
                 .build()).
                 isNotEqualTo(aUser()
                         .withId(10)
-                        .withName("Seppe")
+                        .withFirstName("Seppe")
                         .build());
     }
 
