@@ -3,6 +3,8 @@ package be.cegeka.bibliothouris.domain.users;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static be.cegeka.bibliothouris.domain.users.UserTestBuilder.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -100,4 +102,4 @@ public class UserTest {
                         .build());
     }
 
-  }
+}
