@@ -14,7 +14,7 @@ public class BookRepository {
 
 
     public List<Book> getAllBooks() {
-        return bookList;
+        return entityManager.createQuery("select b from Book b",Book.class).getResultList();
     }
 
     public void addBook(Book book){
@@ -22,8 +22,6 @@ public class BookRepository {
     }
 
     public Book getBookdetails(int id) {
-
         return entityManager.createQuery("select b from Book b where b.id=:id",Book.class).setParameter("id",id).getSingleResult();
-
     }
 }
