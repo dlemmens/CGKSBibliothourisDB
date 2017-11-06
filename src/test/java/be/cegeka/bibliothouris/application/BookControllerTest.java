@@ -33,4 +33,12 @@ public class BookControllerTest {
           bookController.getBookDetails(25);
           verify(bookService).getBookDetails(25);
     }
+
+    @Test
+    public void addBook_shouldActivateCorrespondingMethod() throws Exception {
+        bookController.addBook("123","titla", "blah","bloeh");
+        verify(bookService).addBook("123","titla", "blah","bloeh");
+    }
+
+
 }

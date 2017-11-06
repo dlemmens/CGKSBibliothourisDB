@@ -17,6 +17,9 @@ public class BookRepository {
         return bookList;
     }
 
+    public void addBook(Book book){
+        entityManager.persist(book);
+    }
 
     public Book getBookdetails(int id) {
 
