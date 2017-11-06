@@ -19,10 +19,11 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    @Secured("ROLE_USER")
+    @Secured({"ROLE_USER" , "ROLE_LIBRARIAN"})
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
 
     @PostMapping
     public void addUser(

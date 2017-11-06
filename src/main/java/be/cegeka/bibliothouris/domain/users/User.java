@@ -1,6 +1,10 @@
 package be.cegeka.bibliothouris.domain.users;
 
+import org.apache.catalina.Role;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -23,8 +27,16 @@ public class User {
     private String postalCode;
     @Column(name = "CITY")
     private String city;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "USER_WITH_ROLE",
+            joinColumns = {@JoinColumn(name = "u_id")},
+            inverseJoinColumns = {@JoinColumn(name = "r_id")}
+    )
+    private List<UserRole> roles;
 
-    private User(){
+
+    private User() {
     }
 
     public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city) {
