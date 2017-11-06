@@ -32,4 +32,10 @@ public class BookRepository {
                 .getResultList();
     }
 
+    public List<Book> getBookDetailsByTitle(String title) {
+        return entityManager
+                .createQuery("select b from Book b where b.title like :title", Book.class)
+                .setParameter("title", title.replaceAll("\\*", "%"))
+                .getResultList();
+    }
 }

@@ -27,13 +27,18 @@ public class BookControllerTest {
         verify(bookService).getAllBooks();
     }
 
-
-
     @Test
     public void getBookDetailsByISBN_shouldActivateCorrepsondingMethodInBookServiceWithGivenISBN() throws Exception {
         bookController.getBookDetailsByISBN("1245");
         verify(bookService).getBookDetailsByISBN("1245");
     }
+
+    @Test
+    public void getBookDetailsByTitle_shouldActivateCorrepsondingMethodInBookServiceWithGivenTitle() throws Exception {
+        bookController.getBookDetailsByTitle("Ex-Drummer");
+        verify(bookService).getBookDetailsByTitle("Ex-Drummer");
+    }
+
     @Test
     public void whenASingleBookGetsAsked_shouldActivateCorrespondingMethodWithCorrectParameterInBookService() throws Exception {
           bookController.getBookDetails(25);

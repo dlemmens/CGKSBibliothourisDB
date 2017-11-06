@@ -37,10 +37,13 @@ public class BookController {
         bookService.addBook(isbn, title, authorLastName, authorFirstName);
     }
 
-
-
     @GetMapping(path = "/byISBN")
     public List<Book> getBookDetailsByISBN(@RequestParam(value = "ISBN")    String isbn) {
         return bookService.getBookDetailsByISBN(isbn);
+    }
+
+    @GetMapping(path = "/byTitle")
+    public List<Book> getBookDetailsByTitle(@RequestParam(value = "title") String title) {
+        return bookService.getBookDetailsByTitle(title);
     }
 }

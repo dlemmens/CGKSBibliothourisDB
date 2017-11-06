@@ -47,7 +47,11 @@ public class BookServiceTest {
     public void getBookDetailsByISBN_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectISBN() throws Exception {
         bookService.getBookDetailsByISBN("1245");
         verify(bookRepository).getBookDetailsByISBN("1245");
+    }
 
-
+    @Test
+    public void getBookDetailsByTitle_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectTitle() throws Exception {
+        bookService.getBookDetailsByTitle("Ex-Drummer");
+        verify(bookRepository).getBookDetailsByTitle("Ex-Drummer");
     }
 }

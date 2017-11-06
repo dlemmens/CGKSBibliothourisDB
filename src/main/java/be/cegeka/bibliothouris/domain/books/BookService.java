@@ -33,4 +33,8 @@ public class BookService {
     public List<Book> getBookDetailsByISBN(String isbn) {
         return bookRepository.getBookDetailsByISBN(isbn);
     }
+
+    public List<Book> getBookDetailsByTitle(String title) {
+        return bookRepository.getBookDetailsByTitle(title);
+    }
 }
