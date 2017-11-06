@@ -16,6 +16,8 @@ public class BookRepository {
     public List<Book> getAllBooks() {
         return bookList;
     }
+
+
     public Book getBookdetails(int id) {
 
         return entityManager.createQuery("select b from Book b where b.id=:id",Book.class).setParameter("id",id).getSingleResult();
