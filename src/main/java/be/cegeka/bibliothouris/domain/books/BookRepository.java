@@ -14,7 +14,7 @@ public class BookRepository {
 
 
     public List<Book> getAllBooks() {
-        return entityManager.createQuery("select b from Book b",Book.class).getResultList();
+        return entityManager.createQuery("select b from Book b", Book.class).getResultList();
     }
 
     public void addBook(Book book){
@@ -22,6 +22,14 @@ public class BookRepository {
     }
 
     public Book getBookdetails(int id) {
-        return entityManager.createQuery("select b from Book b where b.id=:id",Book.class).setParameter("id",id).getSingleResult();
+        return entityManager.createQuery("select b from Book b where b.id=:id", Book.class).setParameter("id", id).getSingleResult();
     }
+
+    public List<Book> getBookDetailsByISBN(String isbn) {
+        return entityManager
+                .createQuery("select b from Book b where b.isbn like :isbn", Book.class)
+                .setParameter("isbn", isbn.replaceAll("\\*", "%"))
+                .getResultList();
+    }
+
 }

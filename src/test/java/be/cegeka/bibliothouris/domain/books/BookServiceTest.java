@@ -42,4 +42,12 @@ public class BookServiceTest {
         bookService.addBook("123456789", "Guggenheim koopt een neger", "Brusselmans", "Herman");
         verify(bookRepository).addBook(book);
     }
+
+    @Test
+    public void getBookDetailsByISBN_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectISBN() throws Exception {
+        bookService.getBookDetailsByISBN("1245");
+        verify(bookRepository).getBookDetailsByISBN("1245");
+
+
+    }
 }
