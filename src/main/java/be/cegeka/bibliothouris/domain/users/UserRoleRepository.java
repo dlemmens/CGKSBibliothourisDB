@@ -15,6 +15,6 @@ public class UserRoleRepository {
 
 
     public List<UserRole> findUserRole(String userRole) {
-        return entityManager.createQuery("Select r from role r where r.role=:role", UserRole.class).setParameter("role", userRole).getResultList();
+        return entityManager.createQuery("Select r from UserRole r where r.role=:role", UserRole.class).setParameter("role", userRole).getResultList();
     }
 }

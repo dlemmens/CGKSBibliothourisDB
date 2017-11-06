@@ -21,9 +21,9 @@ public class UserDetailsWrapper implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities()     {
-        ArrayList userRoles = new ArrayList();
+        ArrayList<GrantedAuthority> userRoles = new ArrayList<>();
         for (UserRole r: user.getRoles()) {
-            userRoles.add(new SimpleGrantedAuthority(r.getRole()));
+            userRoles.add(new SimpleGrantedAuthority("ROLE_" + r.getRole()));
         }
         return userRoles;
 //        return Arrays.asList(new SimpleGrantedAuthority("USER"));
