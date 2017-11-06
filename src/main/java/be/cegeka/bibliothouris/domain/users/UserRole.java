@@ -14,9 +14,18 @@ public class UserRole {
     @Column(name = "role")
     private String role;
 
-    public UserRole(String role) {
+//    private list<Strings> userRoles=
+
+
+    private UserRole() {
+    }
+
+    public UserRole(int id, String role) {
+        this.id = id;
         this.role = role;
     }
 
-
+    public String getRole() {
+        return role;
+    }
 }

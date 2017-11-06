@@ -2,6 +2,9 @@ package be.cegeka.bibliothouris.domain.users;
 
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserTestBuilder {
 
     private int id;
@@ -12,6 +15,7 @@ public class UserTestBuilder {
     private String houseNumber;
     private String postalCode;
     private String city;
+    private List<UserRole> roles = new ArrayList<>();
 
     public static UserTestBuilder aUser(){
         return new UserTestBuilder()
@@ -19,10 +23,16 @@ public class UserTestBuilder {
                 .withLastName("Gielen")
                 .withCity("Hasselt")
                 .withInss("1234");
+
+    }
+
+    public UserTestBuilder withRole(UserRole rol) {
+        this.roles.add(rol);
+        return this;
     }
 
     public User build(){
-        User user = new User(inss, lastName, firstName, street, houseNumber, postalCode, city);
+        User user = new User(inss, lastName, firstName, street, houseNumber, postalCode, city, roles);
         ReflectionTestUtils.setField(user,"id", id);
         return user;
     }

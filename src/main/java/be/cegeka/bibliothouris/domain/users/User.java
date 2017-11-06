@@ -4,6 +4,7 @@ import org.apache.catalina.Role;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,13 +34,13 @@ public class User {
             joinColumns = {@JoinColumn(name = "u_id")},
             inverseJoinColumns = {@JoinColumn(name = "r_id")}
     )
-    private List<UserRole> roles;
+    private List<UserRole> roles= new ArrayList<UserRole>();
 
 
     private User() {
     }
 
-    public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city) {
+    public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city, List<UserRole > userRoles) {
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -47,6 +48,7 @@ public class User {
         this.houseNumber = houseNumber;
         this.postalCode = postalCode;
         this.city = city;
+        this.roles.addAll(userRoles);
     }
 
     public int getId() {
@@ -55,6 +57,10 @@ public class User {
 
     public String getName() {
         return firstName;
+    }
+
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
     @Override

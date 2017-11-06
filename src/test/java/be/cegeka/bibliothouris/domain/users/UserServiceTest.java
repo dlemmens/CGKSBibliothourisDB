@@ -14,6 +14,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,20 +31,28 @@ public class UserServiceTest {
     private UserService userService;
 
     @Mock
+    private UserRoleRepository userRoleRepository;
+
+    @Mock
     private UserRepository userRepository;
 
     @Test
     public void addUser_ShouldCallUserRepository() throws Exception {
+        List<UserRole> userRoles = Arrays.asList(new UserRole(1, "hgcf"));
+        when(userRoleRepository.findUserRole("USER")).thenReturn(userRoles);
+
         userService.addUser("123", "Dauchy", null, null, null, null, "Leuven");
 
-        verify(userRepository).addUser(new User( "123", "Dauchy", null, null, null, null, "Leuven"));
+        verify(userRepository).addUser(new User( "123", "Dauchy", null, null, null, null, "Leuven",userRoles));
     }
 
     @Test
     public void getAllUsers() throws Exception {
-        User user1 = new User( "668", "Stroobants", "Jeroen", null, null, null, "Leuven");
-        User user2 = new User( "456", "Karpisek", null, null, null, null, "Rumst");
-        User user3 = new User( "123", "Dauchy", null, null, null, null, "Leuven");
+        List<UserRole> userRoles = Arrays.asList(new UserRole(1, "hgcf"));
+        when(userRoleRepository.findUserRole("USER")).thenReturn(userRoles);
+        User user1 = new User( "668", "Stroobants", "Jeroen", null, null, null, "Leuven",userRoles);
+        User user2 = new User( "456", "Karpisek", null, null, null, null, "Rumst",userRoles);
+        User user3 = new User( "123", "Dauchy", null, null, null, null, "Leuven",userRoles);
 
         when(userRepository.getAllUsers()).thenReturn(Arrays.asList(user1, user2, user3));
 

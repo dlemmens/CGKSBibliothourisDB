@@ -37,9 +37,13 @@ public class UserRepositoryTest {
 
     @Before
     public void setup(){
-        seppe = aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("1234").build();
-        kiki = aUser().withFirstName("Kiki").withLastName("Willems").withCity("Leuven").withInss("5678").build();
+        UserRole fakeRole = new UserRole(10, "FAKE");
 
+        seppe = aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("1234").withRole(fakeRole).build();
+        kiki = aUser().withFirstName("Kiki").withLastName("Willems").withCity("Leuven").withInss("5678").withRole(fakeRole).build();
+
+
+        entityManager.persist(fakeRole);
         entityManager.persist(seppe);
         entityManager.persist(kiki);
     }
