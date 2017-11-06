@@ -1,6 +1,7 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
-import be.cegeka.bibliothouris.application.BookController;
+import be.cegeka.bibliothouris.domain.books.BookRepository;
+import be.cegeka.bibliothouris.domain.books.BookService;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -8,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 

@@ -1,4 +1,4 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
 import org.springframework.test.util.ReflectionTestUtils;
 

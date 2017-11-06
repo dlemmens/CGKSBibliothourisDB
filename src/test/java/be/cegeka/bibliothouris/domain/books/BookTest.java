@@ -1,4 +1,4 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
 import static org.junit.Assert.*;
 

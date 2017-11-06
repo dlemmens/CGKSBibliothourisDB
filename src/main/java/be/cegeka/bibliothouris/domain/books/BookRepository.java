@@ -1,4 +1,4 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;

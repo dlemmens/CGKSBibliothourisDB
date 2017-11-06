@@ -1,14 +1,11 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
-import org.hibernate.Criteria;
 import org.springframework.data.annotation.Id;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import java.util.List;
 
 @Named

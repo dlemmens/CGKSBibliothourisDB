@@ -1,4 +1,4 @@
-package be.cegeka.bibliothouris.domain.users;
+package be.cegeka.bibliothouris.domain.books;
 
 import be.cegeka.bibliothouris.Application;
 import org.assertj.core.api.Assertions;
@@ -14,9 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import static be.cegeka.bibliothouris.domain.users.BookTestBuilder.aBook;
-import static org.junit.Assert.*;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+import static be.cegeka.bibliothouris.domain.books.BookTestBuilder.aBook;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

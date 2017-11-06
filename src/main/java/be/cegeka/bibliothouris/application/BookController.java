@@ -1,7 +1,7 @@
 package be.cegeka.bibliothouris.application;
 
-import be.cegeka.bibliothouris.domain.users.Book;
-import be.cegeka.bibliothouris.domain.users.BookService;
+import be.cegeka.bibliothouris.domain.books.Book;
+import be.cegeka.bibliothouris.domain.books.BookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
