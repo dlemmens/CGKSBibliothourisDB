@@ -23,6 +23,9 @@ public class BookController {
     public Book getBookDetails(@PathVariable(value = "id") int id) {
         return bookService.getBookDetails(id);
     }
+
+
+
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }

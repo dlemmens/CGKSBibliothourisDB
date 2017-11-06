@@ -27,4 +27,10 @@ public class BookControllerTest {
         verify(bookService).getAllBooks();
 
     }
+
+    @Test
+    public void whenASingleBookGetsAsked_shouldActivateCorrespondingMethodWithCorrectParameterInBookService() throws Exception {
+          bookController.getBookDetails(25);
+          verify(bookService).getBookDetails(25);
+    }
 }

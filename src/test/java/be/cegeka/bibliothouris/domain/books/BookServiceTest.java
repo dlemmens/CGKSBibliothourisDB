@@ -28,4 +28,10 @@ public class BookServiceTest {
         bookService.getAllBooks();
         verify(bookRepository).getAllBooks();
     }
+
+    @Test
+    public void whenASingleBookGetsAsked_shouldActivateCorrespondingMethodWithCorrectParameterInBookRepository() throws Exception {
+        bookService.getBookDetails(25);
+        verify(bookRepository).getBookdetails(25);
+    }
 }
