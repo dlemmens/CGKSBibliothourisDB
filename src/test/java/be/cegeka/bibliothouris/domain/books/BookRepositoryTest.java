@@ -14,7 +14,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import java.util.Arrays;
+
 import static be.cegeka.bibliothouris.domain.books.BookTestBuilder.aBook;
+import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,6 +32,7 @@ public class BookRepositoryTest {
     private EntityManager entityManager;
 
     private Book bible;
+    private Book koran;
 
     @Before
     public void setUp() throws Exception {
@@ -37,12 +41,23 @@ public class BookRepositoryTest {
                 .withAuthorLastName("Maximus")
                 .withIsbn("666")
                 .build();
+        koran = aBook().withTitle("de Koran")
+                .withIsbn("1111")
+                .withAuthorFirstName("oude")
+                .withAuthorFirstName("klet")
+                .build();
         entityManager.persist(bible);
+        entityManager.persist(koran);
     }
 
     @Test
     public void getDetails_shouldReturnBookDetails() throws Exception {
         Book book = bookRepository.getBookdetails(bible.getId());
-        Assertions.assertThat(book).isEqualTo(bible);
+        assertThat(book).isEqualTo(bible);
+    }
+
+    @Test
+    public void getAllBooks_shouldReturnAllBooks() throws Exception {
+        assertThat(bookRepository.getAllBooks()).isEqualTo(Arrays.asList(bible,koran));
     }
 }

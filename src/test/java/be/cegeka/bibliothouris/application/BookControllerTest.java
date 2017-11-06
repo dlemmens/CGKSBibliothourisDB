@@ -25,6 +25,5 @@ public class BookControllerTest {
     public void whenAllBooksGetsAsked_shouldActivateCorrespondingMethodInBookService() throws Exception {
         bookController.getAllBooks();
         verify(bookService).getAllBooks();
-
     }
 }
