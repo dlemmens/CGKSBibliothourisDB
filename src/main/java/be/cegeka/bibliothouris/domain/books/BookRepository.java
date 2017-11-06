@@ -12,9 +12,8 @@ public class BookRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    Klopt nog niet ;)
     public List<Book> getAllBooks() {
-        return bookList;
+        return entityManager.createQuery("select b from Book b",Book.class).getResultList();
     }
 
     public Book getBookdetails(int id) {
