@@ -20,6 +20,11 @@ public class BookService {
         return bookRepository.getAllBooks();
     }
 
+    public void addBook(String isbn, String title, String authorLastName, String authorFirstName){
+        bookRepository.addBook(new Book(isbn, title, authorLastName, authorFirstName));
+    }
+
+
 
     public Book getBookDetails(int id) {
         return bookRepository.getBookdetails(id);

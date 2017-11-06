@@ -12,8 +12,13 @@ public class BookRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     public List<Book> getAllBooks() {
         return entityManager.createQuery("select b from Book b",Book.class).getResultList();
+    }
+
+    public void addBook(Book book){
+        entityManager.persist(book);
     }
 
     public Book getBookdetails(int id) {
