@@ -17,7 +17,10 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Arrays;
+
 import static be.cegeka.bibliothouris.domain.books.BookTestBuilder.aBook;
+import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -49,12 +52,17 @@ public class BookRepositoryTest {
                 .withIsbn("14566")
                 .build();
         entityManager.persist(koran);
-    }
+            }
 
     @Test
     public void getDetails_shouldReturnBookDetails() throws Exception {
         Book book = bookRepository.getBookdetails(bible.getId());
-        Assertions.assertThat(book).isEqualTo(bible);
+        assertThat(book).isEqualTo(bible);
+    }
+
+    @Test
+    public void getAllBooks_shouldReturnAllBooks() throws Exception {
+        assertThat(bookRepository.getAllBooks()).isEqualTo(Arrays.asList(bible,koran));
     }
 
     @Test

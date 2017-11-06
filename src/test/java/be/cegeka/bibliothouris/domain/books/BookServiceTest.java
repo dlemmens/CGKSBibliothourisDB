@@ -30,6 +30,20 @@ public class BookServiceTest {
     }
 
     @Test
+    public void whenASingleBookGetsAsked_shouldActivateCorrespondingMethodWithCorrectParameterInBookRepository() throws Exception {
+        bookService.getBookDetails(25);
+        verify(bookRepository).getBookdetails(25);
+    }
+
+    @Test
+    public void whenSingleGetsAdded_ShouldActivateCorrespondingMethodInBookRepository() throws Exception {
+        Book book = new Book("123456789", "Guggenheim koopt een neger", "Brusselmans", "Herman");
+
+        bookService.addBook("123456789", "Guggenheim koopt een neger", "Brusselmans", "Herman");
+        verify(bookRepository).addBook(book);
+    }
+
+    @Test
     public void getBookDetailsByISBN_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectISBN() throws Exception {
         bookService.getBookDetailsByISBN("1245");
         verify(bookRepository).getBookDetailsByISBN("1245");
