@@ -13,10 +13,6 @@ public class BookService {
     @Inject
     private BookRepository bookRepository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     public BookService() {
     }
 
@@ -26,7 +22,6 @@ public class BookService {
 
 
     public Book getBookDetails(int id) {
-
         return bookRepository.getBookdetails(id);
     }
 }

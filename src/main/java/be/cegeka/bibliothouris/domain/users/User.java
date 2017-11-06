@@ -27,9 +27,6 @@ public class User {
     private User(){
     }
 
-    public User(String firstName) {
-        this.firstName = firstName;
-    }
 
     public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city) {
         this.inss = inss;
