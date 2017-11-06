@@ -38,7 +38,7 @@ public class BookController {
 
 
     @GetMapping(path = "/byISBN")
-    public List<Book> getBookDetailsByISBN(@PathVariable(value = "ISBN")    String isbn) {
+    public List<Book> getBookDetailsByISBN(@RequestParam(value = "ISBN")    String isbn) {
         return bookService.getBookDetailsByISBN(isbn);
     }
 }
