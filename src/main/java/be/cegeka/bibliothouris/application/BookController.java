@@ -25,8 +25,13 @@ public class BookController {
     }
 
 
-
+    @GetMapping(path = "/all")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
+    }
+
+    @GetMapping(path = "/byISBN")
+    public List<Book> getBookDetailsByISBN(@PathVariable(value = "ISBN")    String isbn) {
+        return bookService.getBookDetailsByISBN(isbn);
     }
 }

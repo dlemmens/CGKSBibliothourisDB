@@ -27,4 +27,10 @@ public class BookControllerTest {
         verify(bookService).getAllBooks();
 
     }
+
+    @Test
+    public void getBookDetailsByISBN_shouldActivateCorrepsondingMethodInBookServiceWithGivenISBN() throws Exception {
+    bookController.getBookDetailsByISBN("1245");
+    verify(bookService).getBookDetailsByISBN("1245");
+    }
 }

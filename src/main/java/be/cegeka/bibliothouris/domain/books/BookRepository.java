@@ -12,19 +12,19 @@ public class BookRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    Klopt nog niet ;)
     public List<Book> getAllBooks() {
-        return bookList;
+        return entityManager.createQuery("select b from Book b", Book.class).getResultList();
     }
-
 
     public Book getBookdetails(int id) {
-
-        return entityManager.createQuery("select b from Book b where b.id=:id",Book.class).setParameter("id",id).getSingleResult();
-
+        return entityManager.createQuery("select b from Book b where b.id=:id", Book.class).setParameter("id", id).getSingleResult();
     }
 
-    public Book getBookDetailsByISBN(int isbn){
-        return entityManager.createQuery("select b from Book b where b.isbn =: %isbn%",Book.class).setParameter("isbn", isbn).getSingleResult();
+    public List<Book> getBookDetailsByISBN(String isbn) {
+        return entityManager
+                .createQuery("select b from Book b where b.isbn like :isbn", Book.class)
+                .setParameter("isbn", isbn.replaceAll("\\*", "%"))
+                .getResultList();
     }
+
 }

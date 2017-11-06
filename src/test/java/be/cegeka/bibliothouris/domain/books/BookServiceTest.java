@@ -28,4 +28,12 @@ public class BookServiceTest {
         bookService.getAllBooks();
         verify(bookRepository).getAllBooks();
     }
+
+    @Test
+    public void getBookDetailsByISBN_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectISBN() throws Exception {
+        bookService.getBookDetailsByISBN("1245");
+        verify(bookRepository).getBookDetailsByISBN("1245");
+
+
+    }
 }
