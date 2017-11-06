@@ -31,4 +31,21 @@ public class Book {
     public int getId() {
         return id;
     }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
+
+    public String getAuthorFirstName() {
+        return authorFirstName;
+    }
+
 }

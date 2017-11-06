@@ -27,7 +27,6 @@ public class User {
     private User(){
     }
 
-
     public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city) {
         this.inss = inss;
         this.lastName = lastName;
@@ -63,4 +62,32 @@ public class User {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         return result;
     } //Checks only FIRST NAME. Needs to be expanded!!!
+
+    public String getInss() {
+        return inss;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }
