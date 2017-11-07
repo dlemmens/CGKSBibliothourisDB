@@ -2,10 +2,15 @@ package be.cegeka.bibliothouris.domain.users;
 
 import org.apache.catalina.Role;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.hibernate.annotations.LazyCollectionOption.FALSE;
 
 @Entity
 @Table(name = "USERS")
@@ -37,6 +42,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "r_id")}
     )
 
+    @LazyCollection(FALSE)
     private List<UserRole> roles= new ArrayList<UserRole>();
 
     private User() {
