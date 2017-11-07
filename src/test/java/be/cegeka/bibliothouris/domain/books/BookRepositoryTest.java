@@ -63,7 +63,7 @@ public class BookRepositoryTest {
 
     @Test
     public void getAllBooks_shouldReturnAllBooks() throws Exception {
-        assertThat(bookRepository.getAllBooks()).isEqualTo(Arrays.asList(bible, koran));
+        assertThat(bookRepository.getAllBooks()).contains(bible, koran);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class BookRepositoryTest {
 
     @Test
     public void addBookShouldAddBookToBooksTable() throws Exception {
-        Book testboek=new Book("testisbn","testtitel","testlastname","testfirstname");
+        Book testboek = new Book("testisbn", "testtitel", "testlastname", "testfirstname");
         bookRepository.addBook(testboek);
         Assertions.assertThat(bookRepository.getAllBooks()).contains(testboek);
     }
