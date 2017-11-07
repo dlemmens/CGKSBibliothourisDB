@@ -14,15 +14,17 @@ public class BookRepository {
 
 
     public List<Book> getAllBooks() {
-        return entityManager.createQuery("select b from Book b", Book.class).getResultList();
+        return entityManager.createQuery("select b from Book b", Book.class)
+                .getResultList();
     }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         entityManager.persist(book);
     }
 
     public Book getBookdetails(int id) {
-        return entityManager.createQuery("select b from Book b where b.id=:id", Book.class).setParameter("id", id).getSingleResult();
+        return entityManager.createQuery("select b from Book b where b.id=:id", Book.class)
+                .setParameter("id", id).getSingleResult();
     }
 
     public List<Book> getBookDetailsByISBN(String isbn) {
@@ -36,6 +38,17 @@ public class BookRepository {
         return entityManager
                 .createQuery("select b from Book b where b.title like :title", Book.class)
                 .setParameter("title", title.replaceAll("\\*", "%"))
+                .getResultList();
+    }
+
+    public List<Book> getBookDetailsByAuthor(String author) {
+        return entityManager
+                .createQuery("select b from Book b where b.authorFirstName like :author or " +
+                        "b.authorLastName like :author or concat(b.authorFirstName,b.authorLastName) like :author or " +
+                        "concat(b.authorFirstName,' ',b.authorLastName) like :author or " +
+                        "concat(b.authorLastName,' ',b.authorFirstName) like :author or " +
+                        "concat(b.authorLastName,b.authorFirstName) like :author", Book.class)
+                .setParameter("author", author.replaceAll("\\*", "%"))
                 .getResultList();
     }
 }

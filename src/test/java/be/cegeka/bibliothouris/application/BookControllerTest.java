@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
@@ -21,6 +22,7 @@ public class BookControllerTest {
 
     @Mock
     private BookService bookService;
+
     @Test
     public void whenAllBooksGetsAsked_shouldActivateCorrespondingMethodInBookService() throws Exception {
         bookController.getAllBooks();
@@ -41,14 +43,20 @@ public class BookControllerTest {
 
     @Test
     public void whenASingleBookGetsAsked_shouldActivateCorrespondingMethodWithCorrectParameterInBookService() throws Exception {
-          bookController.getBookDetails(25);
-          verify(bookService).getBookDetails(25);
+        bookController.getBookDetails(25);
+        verify(bookService).getBookDetails(25);
     }
 
     @Test
     public void addBook_shouldActivateCorrespondingMethod() throws Exception {
-        bookController.addBook("123","titla", "blah","bloeh");
-        verify(bookService).addBook("123","titla", "blah","bloeh");
+        bookController.addBook("123", "titla", "blah", "bloeh");
+        verify(bookService).addBook("123", "titla", "blah", "bloeh");
+    }
+
+    @Test
+    public void getBookDetailsByAuthor_shouldActivateCorrespondingMethod() throws Exception {
+        bookController.getBookDetailsByAuthor("Gerrus");
+        verify(bookService).getBookDetailsByAuthor("Gerrus");
     }
 
 

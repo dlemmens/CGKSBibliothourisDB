@@ -37,4 +37,8 @@ public class BookService {
     public List<Book> getBookDetailsByTitle(String title) {
         return bookRepository.getBookDetailsByTitle(title);
     }
+
+    public List<Book> getBookDetailsByAuthor(String author) {
+        return bookRepository.getBookDetailsByAuthor(author);
+    }
 }

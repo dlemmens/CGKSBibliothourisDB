@@ -52,7 +52,7 @@ public class BookRepositoryTest {
                 .withIsbn("14566")
                 .build();
         entityManager.persist(koran);
-            }
+    }
 
     @Test
     public void getDetails_shouldReturnBookDetails() throws Exception {
@@ -62,14 +62,12 @@ public class BookRepositoryTest {
 
     @Test
     public void getAllBooks_shouldReturnAllBooks() throws Exception {
-        assertThat(bookRepository.getAllBooks()).isEqualTo(Arrays.asList(bible,koran));
+        assertThat(bookRepository.getAllBooks()).isEqualTo(Arrays.asList(bible, koran));
     }
 
     @Test
     public void getDetailsByCompleteISBN_shouldReturnBookDetails() throws Exception {
         List<Book> books = bookRepository.getBookDetailsByISBN("666");
-
-
         Assertions.assertThat(books).contains(bible);
     }
 
@@ -88,8 +86,6 @@ public class BookRepositoryTest {
     @Test
     public void getDetailsByPartialInISBN_shouldReturnBookDetails() throws Exception {
         List<Book> books = bookRepository.getBookDetailsByISBN("6*6");
-
-
         Assertions.assertThat(books).contains(bible);
     }
 
@@ -105,5 +101,39 @@ public class BookRepositoryTest {
         Assertions.assertThat(books).contains(koran);
     }
 
+    @Test
+    public void getDetailsByAuthorFirstName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("Gerrus");
+        Assertions.assertThat(books).contains(bible);
+    }
 
+    @Test
+    public void getDetailsByAuthorLastName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("Maximus");
+        Assertions.assertThat(books).contains(bible);
+    }
+
+    @Test
+    public void getDetailsByAuthorFirstNameAndLastName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("GerrusMaximus");
+        Assertions.assertThat(books).contains(bible);
+    }
+
+    @Test
+    public void getDetailsByPartialAuthorFirstName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("Gerr*");
+        Assertions.assertThat(books).contains(bible);
+    }
+
+    @Test
+    public void getDetailsByPartialAuthorLastName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("*imus");
+        Assertions.assertThat(books).contains(bible);
+    }
+
+    @Test
+    public void getDetailsByPartialAuthorName_shouldReturnBookDetails() throws Exception {
+        List<Book> books = bookRepository.getBookDetailsByAuthor("*us* *ma*");
+        Assertions.assertThat(books).contains(bible);
+    }
 }

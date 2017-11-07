@@ -46,4 +46,8 @@ public class BookController {
     public List<Book> getBookDetailsByTitle(@RequestParam(value = "title") String title) {
         return bookService.getBookDetailsByTitle(title);
     }
+    @GetMapping(path = "/byAuthor")
+    public List<Book> getBookDetailsByAuthor(String author) {
+        return bookService.getBookDetailsByAuthor(author);
+    }
 }

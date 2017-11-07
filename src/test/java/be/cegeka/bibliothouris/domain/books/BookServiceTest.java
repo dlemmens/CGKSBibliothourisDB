@@ -54,4 +54,10 @@ public class BookServiceTest {
         bookService.getBookDetailsByTitle("Ex-Drummer");
         verify(bookRepository).getBookDetailsByTitle("Ex-Drummer");
     }
+
+    @Test
+    public void getBookDetailsByAuthor_shouldActivateCorrespondingMethodInBookRepositoryWithCorrectAuthor() throws Exception {
+        bookService.getBookDetailsByAuthor("Gerrus");
+        verify(bookRepository).getBookDetailsByAuthor("Gerrus");
+    }
 }
