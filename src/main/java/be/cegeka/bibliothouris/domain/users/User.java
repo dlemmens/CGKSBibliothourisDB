@@ -48,7 +48,7 @@ public class User {
     private User() {
     }
 
-    public User(String inss, String lastName, String firstName, String password, String street, String houseNumber, String postalCode, String city, List<UserRole > userRoles) {
+    public User(String inss, String lastName, String firstName, String password, String street, String houseNumber, String postalCode, String city, List<UserRole> userRoles) {
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;

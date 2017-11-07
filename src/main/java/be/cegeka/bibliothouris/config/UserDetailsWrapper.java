@@ -21,6 +21,7 @@ public class UserDetailsWrapper implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities()     {
+
         ArrayList<GrantedAuthority> userRoles = new ArrayList<>();
         for (UserRole r: user.getRoles()) {
             userRoles.add(new SimpleGrantedAuthority("ROLE_" + r.getRole()));
@@ -36,8 +37,7 @@ public class UserDetailsWrapper implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getName();
-    }
+        return user.getInss();}
 
     @Override
     public boolean isAccountNonExpired() {

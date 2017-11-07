@@ -28,11 +28,11 @@ public class BookController {
     }
 
     @PostMapping
-    @Secured({"ROLE_LIBRARIAN"})
+    @Secured("ROLE_LIBRARIAN")
     public void addBook(
-            @RequestParam(value = "isbn", required = false) String isbn,
-            @RequestParam(value = "title", required = false) String title,
-            @RequestParam(value = "authorLastName", required = false) String authorLastName,
+            @RequestParam(value = "isbn", required = true) String isbn,
+            @RequestParam(value = "title", required = true) String title,
+            @RequestParam(value = "authorLastName", required = true) String authorLastName,
             @RequestParam(value = "authorFirstName", required = false) String authorFirstName){
         bookService.addBook(isbn, title, authorLastName, authorFirstName);
     }

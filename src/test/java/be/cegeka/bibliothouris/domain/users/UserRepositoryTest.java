@@ -51,7 +51,10 @@ public class UserRepositoryTest {
     @Test
     public void getAllUsers() throws Exception {
         List<User> users = userRepository.getAllUsers();
-        assertThat(users).containsOnly(seppe, kiki);
+        User admin = userRepository.getUserByInss("admin");
+        User librarian = userRepository.getUserByInss("librarian");
+        User user = userRepository.getUserByInss("user");
+        assertThat(users).containsOnly(seppe, kiki, admin,librarian,user);
     }
 
     @Test
@@ -78,7 +81,10 @@ public class UserRepositoryTest {
         User tbow = aUser().withFirstName("tbow").withPassword("rosalina").withInss("333333").build();
         userRepository.addUser(tbow);
         List<User> users = userRepository.getAllUsers();
-        assertThat(users).containsOnly(seppe, kiki, tbow);
+        User admin = userRepository.getUserByInss("admin");
+        User librarian = userRepository.getUserByInss("librarian");
+        User user = userRepository.getUserByInss("user");
+        assertThat(users).containsOnly(seppe, kiki, admin, librarian,user, tbow);
     }
 
     @After
