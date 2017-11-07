@@ -1,6 +1,7 @@
 package be.cegeka.bibliothouris.domain.books;
 
 import be.cegeka.bibliothouris.Application;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -135,5 +136,12 @@ public class BookRepositoryTest {
     public void getDetailsByPartialAuthorName_shouldReturnBookDetails() throws Exception {
         List<Book> books = bookRepository.getBookDetailsByAuthor("*us* *ma*");
         Assertions.assertThat(books).contains(bible);
+    }
+
+    @Test
+    public void addBookShouldAddBookToBooksTable() throws Exception {
+        Book testboek=new Book("testisbn","testtitel","testlastname","testfirstname");
+        bookRepository.addBook(testboek);
+        Assertions.assertThat(bookRepository.getAllBooks()).contains(testboek);
     }
 }
