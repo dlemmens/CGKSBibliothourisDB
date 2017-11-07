@@ -1,5 +1,6 @@
 package be.cegeka.bibliothouris.domain.books;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -122,5 +123,30 @@ public class BookTest {
     public void equals_ObjectWithNoNullISBN_IsFalse() throws Exception {
         assertThat(new Book("123456", "Ex-Drummer", "Brusselsmans", null)).
                 isNotEqualTo(new Book("123456", "Ex-Drummer", "Brusselsmans", "Herman"));
+    }
+
+    @Test
+    public void getIdShouldReturnId() throws Exception {
+        Assertions.assertThat(book.getId()).isEqualTo(0);
+    }
+
+    @Test
+    public void getIsbnShouldReturnISBN() throws Exception {
+        Assertions.assertThat(book.getIsbn()).isEqualTo("123456");
+    }
+
+    @Test
+    public void getTitleShouldReturnTitle() throws Exception {
+        Assertions.assertThat(book.getTitle()).isEqualTo("Ex-Drummer");
+    }
+
+    @Test
+    public void getAuthorLastNameShouldReturnLastName() throws Exception {
+        Assertions.assertThat(book.getAuthorLastName()).isEqualTo("Brusselsmans");
+    }
+
+    @Test
+    public void getAuthorFirstNameShouldReturnFirstName() throws Exception {
+        Assertions.assertThat(book.getAuthorFirstName()).isEqualTo("Herman");
     }
 }
