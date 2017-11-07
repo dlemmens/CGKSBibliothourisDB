@@ -24,7 +24,6 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(path = "/addUser")
     @PostMapping
     public void addUser(
             @RequestParam(value = "inss", required = true) String inss,
