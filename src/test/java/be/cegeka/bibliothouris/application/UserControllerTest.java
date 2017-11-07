@@ -29,7 +29,7 @@ public class UserControllerTest {
 
     @Test
     public void whenAddUser_shouldActivateCorrespondingMethod() throws Exception {
-        userController.addUser("123", "Dauchy", null, null, null, null, "Leuven");
-        verify(userService).addUser("123", "Dauchy", null, null, null, null, "Leuven");
+        userController.addUser("123", "Dauchy", null, "unicorn", null, null, "3000", "Leuven");
+        verify(userService).addUser("123", "Dauchy", null, "unicorn", null, null, "3000", "Leuven");
     }
 }

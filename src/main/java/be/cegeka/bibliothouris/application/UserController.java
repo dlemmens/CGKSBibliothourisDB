@@ -24,18 +24,17 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-
     @PostMapping
     public void addUser(
             @RequestParam(value = "inss", required = true) String inss,
             @RequestParam(value = "lastName", required = true) String lastName,
             @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "street", required = false) String street,
             @RequestParam(value = "houseNumber", required = false) String houseNumber,
             @RequestParam(value = "postalCode", required = false) String postalCode,
             @RequestParam(value = "city", required = true) String city) {
-        userService.addUser(inss, lastName, firstName, street, houseNumber, postalCode, city);
+        userService.addUser(inss, lastName, firstName, password, street, houseNumber, postalCode, city);
     }
-
 
 }

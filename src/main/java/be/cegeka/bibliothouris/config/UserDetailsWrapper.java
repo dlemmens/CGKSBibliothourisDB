@@ -26,12 +26,12 @@ public class UserDetailsWrapper implements UserDetails {
             userRoles.add(new SimpleGrantedAuthority("ROLE_" + r.getRole()));
         }
         return userRoles;
-//        return Arrays.asList(new SimpleGrantedAuthority("USER"));
+//        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
     public String getPassword() {
-        return "password";
+        return user.getPassword();
     }
 
     @Override

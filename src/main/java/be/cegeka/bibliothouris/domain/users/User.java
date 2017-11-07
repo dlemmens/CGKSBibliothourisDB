@@ -25,6 +25,8 @@ public class User {
     private String lastName;
     @Column(name = "FIRST_NAME")
     private String firstName;
+    @Column(name = "PASSWORD")
+    private String password;
     @Column(name = "STREET")
     private String street;
     @Column(name = "HOUSE_NUMBER")
@@ -39,17 +41,18 @@ public class User {
             joinColumns = {@JoinColumn(name = "u_id")},
             inverseJoinColumns = {@JoinColumn(name = "r_id")}
     )
+
     @LazyCollection(FALSE)
     private List<UserRole> roles= new ArrayList<UserRole>();
-
 
     private User() {
     }
 
-    public User(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city, List<UserRole > userRoles) {
+    public User(String inss, String lastName, String firstName, String password, String street, String houseNumber, String postalCode, String city, List<UserRole > userRoles) {
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.password = password;
         this.street = street;
         this.houseNumber = houseNumber;
         this.postalCode = postalCode;
@@ -113,5 +116,9 @@ public class User {
 
     public String getCity() {
         return city;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

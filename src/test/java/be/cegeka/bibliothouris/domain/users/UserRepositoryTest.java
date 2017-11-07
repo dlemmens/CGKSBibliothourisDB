@@ -39,8 +39,8 @@ public class UserRepositoryTest {
     public void setup(){
         UserRole fakeRole = new UserRole(10, "FAKE");
 
-        seppe = aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("1234").withRole(fakeRole).build();
-        kiki = aUser().withFirstName("Kiki").withLastName("Willems").withCity("Leuven").withInss("5678").withRole(fakeRole).build();
+        seppe = aUser().withFirstName("Seppe").withPassword("koekjes").withLastName("Gielen").withCity("Leuven").withInss("1234").withRole(fakeRole).build();
+        kiki = aUser().withFirstName("Kiki").withPassword("wild").withLastName("Willems").withCity("Leuven").withInss("5678").withRole(fakeRole).build();
 
 
         entityManager.persist(fakeRole);
@@ -68,14 +68,14 @@ public class UserRepositoryTest {
 
     @Test
     public void getUserByFirstName_NoUniqueUserFound(){
-        entityManager.persist(aUser().withFirstName("Seppe").withLastName("Gielen").withCity("Leuven").withInss("12366664").build());
+        entityManager.persist(aUser().withFirstName("Seppe").withPassword("koekjes").withLastName("Gielen").withCity("Leuven").withInss("12366664").build());
 
         assertThatThrownBy(()-> { userRepository.getUserByFirstName("Seppe"); } ).isInstanceOf(NonUniqueResultException.class);
     }
 
     @Test
     public void checkAddUsers(){
-        User tbow = aUser().withFirstName("tbow").withInss("333333").build();
+        User tbow = aUser().withFirstName("tbow").withPassword("rosalina").withInss("333333").build();
         userRepository.addUser(tbow);
         List<User> users = userRepository.getAllUsers();
         assertThat(users).containsOnly(seppe, kiki, tbow);

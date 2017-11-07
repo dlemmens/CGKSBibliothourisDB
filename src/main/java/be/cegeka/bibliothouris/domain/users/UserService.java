@@ -14,8 +14,8 @@ public class UserService {
     @Inject
     private UserRoleRepository userRoleRepository;
 
-    public void addUser(String inss, String lastName, String firstName, String street, String houseNumber, String postalCode, String city){
-        userRepository.addUser(new User(inss, lastName, firstName, street, houseNumber, postalCode, city, userRoleRepository.findUserRole("USER")));
+    public void addUser(String inss, String lastName, String firstName, String password, String street, String houseNumber, String postalCode, String city){
+        userRepository.addUser(new User(inss, lastName, firstName, password, street, houseNumber, postalCode, city, userRoleRepository.findUserRole("USER")));
     }
 
     public List<User> getAllUsers() {
