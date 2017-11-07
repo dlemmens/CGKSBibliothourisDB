@@ -41,18 +41,18 @@ public class UserServiceTest {
         List<UserRole> userRoles = Arrays.asList(new UserRole(1, "hgcf"));
         when(userRoleRepository.findUserRole("USER")).thenReturn(userRoles);
 
-        userService.addUser("123", "Dauchy", null, null, null, null, "Leuven");
+        userService.addUser("123", "Dauchy", null, "unicorn", null, null, "3000", "Leuven");
 
-        verify(userRepository).addUser(new User( "123", "Dauchy", null, null, null, null, "Leuven",userRoles));
+        verify(userRepository).addUser(new User( "123", "Dauchy", null, "unicorn", null, null, "3000", "Leuven", userRoles));
     }
 
     @Test
     public void getAllUsers() throws Exception {
         List<UserRole> userRoles = Arrays.asList(new UserRole(1, "hgcf"));
         when(userRoleRepository.findUserRole("USER")).thenReturn(userRoles);
-        User user1 = new User( "668", "Stroobants", "Jeroen", null, null, null, "Leuven",userRoles);
-        User user2 = new User( "456", "Karpisek", null, null, null, null, "Rumst",userRoles);
-        User user3 = new User( "123", "Dauchy", null, null, null, null, "Leuven",userRoles);
+        User user1 = new User( "668", "Stroobants", "Jeroen", "zalig", null, null, "3000", "Leuven", userRoles);
+        User user2 = new User( "456", "Karpisek", null, "weerwolf", null, null, "4000", "Leuven", userRoles);
+        User user3 = new User( "123", "Dauchy", null, "unicorn", null, null, "3000", "Leuven", userRoles);
 
         when(userRepository.getAllUsers()).thenReturn(Arrays.asList(user1, user2, user3));
 

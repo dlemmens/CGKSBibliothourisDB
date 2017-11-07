@@ -11,6 +11,7 @@ public class UserTestBuilder {
     private String inss;
     private String lastName;
     private String firstName;
+    private String password;
     private String street;
     private String houseNumber;
     private String postalCode;
@@ -20,10 +21,16 @@ public class UserTestBuilder {
     public static UserTestBuilder aUser(){
         return new UserTestBuilder()
                 .withFirstName("Seppe")
+                .withPassword("koekjes")
                 .withLastName("Gielen")
                 .withCity("Hasselt")
                 .withInss("1234");
 
+    }
+
+    public UserTestBuilder withPassword(String password) {
+        this.password = password;
+        return this;
     }
 
     public UserTestBuilder withRole(UserRole rol) {
@@ -32,7 +39,7 @@ public class UserTestBuilder {
     }
 
     public User build(){
-        User user = new User(inss, lastName, firstName, street, houseNumber, postalCode, city, roles);
+        User user = new User(inss, lastName, firstName, password, street, houseNumber, postalCode, city, roles);
         ReflectionTestUtils.setField(user,"id", id);
         return user;
     }
